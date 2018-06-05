@@ -17,8 +17,8 @@ MessageContract.message((error, result) => {
 });
 
 function updateMessage() {
-
   var message = document.getElementById("cspio-email").value
+  require(message =! "")
   document.getElementById("cspio-email").value = ""
 	var data = MessageContract.updateMessage.getData(message)
 
