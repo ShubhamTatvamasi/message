@@ -18,7 +18,11 @@ MessageContract.message((error, result) => {
 
 function updateMessage() {
   var message = document.getElementById("cspio-email").value
-  require(message != "")
+  
+  if (message === "") {
+    return
+  }
+  
   document.getElementById("cspio-email").value = ""
 	var data = MessageContract.updateMessage.getData(message)
 
@@ -33,8 +37,8 @@ function updateMessage() {
   tx.sign(ethereumjs.Buffer.Buffer.from(PrivateKey, "hex"))
 
   var raw = "0x" + tx.serialize().toString("hex")
-
-  web3.eth.sendRawTransaction(raw, (err, transactionHash) => {})
+  console.log(raw)
+  // web3.eth.sendRawTransaction(raw, (err, transactionHash) => {})
 
   Nonce++
 }
