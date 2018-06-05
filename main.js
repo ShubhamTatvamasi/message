@@ -34,9 +34,7 @@ function updateMessage() {
 
   var raw = "0x" + tx.serialize().toString("hex")
 
-  web3.eth.sendRawTransaction(raw, function (err, transactionHash) {
-    console.log(transactionHash)
-  });
+  web3.eth.sendRawTransaction(raw, (err, transactionHash) => {})
 
   Nonce++
 }
