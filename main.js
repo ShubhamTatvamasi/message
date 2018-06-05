@@ -37,8 +37,8 @@ function updateMessage() {
   tx.sign(ethereumjs.Buffer.Buffer.from(PrivateKey, "hex"))
 
   var raw = "0x" + tx.serialize().toString("hex")
-  console.log(raw)
-  // web3.eth.sendRawTransaction(raw, (err, transactionHash) => {})
+
+  web3.eth.sendRawTransaction(raw, (err, transactionHash) => {})
 
   Nonce++
 }
