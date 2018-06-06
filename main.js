@@ -7,32 +7,36 @@ const MessageContract = web3.eth.contract(MessageABI).at(MessageAddress)
 const PublicKey = '0xbe862AD9AbFe6f22BCb087716c7D89a26051f74C'
 const PrivateKey = 'e331b6d69882b4cb4ea581d88e0b604039a3de5967688d3dcffdd2270c0fd109'
 var Nonce = 0
+var message = ""
 
 web3.eth.getTransactionCount(PublicKey, (error, result) => {
 	Nonce = result
 })
 
 for (let i=0; i<1000; i++) {
-
 	setTimeout( () => {
-
 		MessageContract.message((error, result) => {
-		  document.getElementById("cspio-headline").innerHTML = result
-		});
-  
-  }, i*3000 )
+      
+      if (result != message) {
+        message = result
+        document.getElementById("cspio-headline").innerHTML = result
+        document.getElementById("cspio-socialprofiles").style.display = "none"
+      }
 
+		});
+  }, i*3000 )
 }
 
 function updateMessage() {
-  var message = document.getElementById("cspio-email").value
+  var newMessage = document.getElementById("cspio-email").value
   
-  if (message === "") {
+  if (newMessage === "" || newMessage === message) {
     return
   }
-  
+
   document.getElementById("cspio-email").value = ""
-	var data = MessageContract.updateMessage.getData(message)
+  document.getElementById("cspio-socialprofiles").style.display = "block"
+	var data = MessageContract.updateMessage.getData(newMessage)
 
   var tx = new ethereumjs.Tx({
     nonce: Nonce,
