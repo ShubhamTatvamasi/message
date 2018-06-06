@@ -30,11 +30,12 @@ for (let i=0; i<1000; i++) {
 function updateMessage() {
   var newMessage = document.getElementById("cspio-email").value
   
+  document.getElementById("cspio-email").value = ""
+  
   if (newMessage === "" || newMessage === message) {
     return
   }
 
-  document.getElementById("cspio-email").value = ""
   document.getElementById("cspio-socialprofiles").style.display = "block"
 	var data = MessageContract.updateMessage.getData(newMessage)
 
