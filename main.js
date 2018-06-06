@@ -13,7 +13,7 @@ web3.eth.getTransactionCount(PublicKey, (error, result) => {
 	Nonce = result
 })
 
-for (let i=0; i<1000; i++) {
+for (let i=0; i<10000; i++) {
 	setTimeout( () => {
 		MessageContract.message((error, result) => {
       
@@ -24,7 +24,7 @@ for (let i=0; i<1000; i++) {
       }
 
 		});
-  }, i*3000 )
+  }, i*1000 )
 }
 
 function updateMessage() {
