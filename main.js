@@ -12,9 +12,17 @@ web3.eth.getTransactionCount(PublicKey, (error, result) => {
 	Nonce = result
 })
 
-MessageContract.message((error, result) => {
-  document.getElementById("cspio-headline").innerHTML = result
-});
+for (let i=0; i<1000; i++) {
+
+	setTimeout( () => {
+
+		MessageContract.message((error, result) => {
+		  document.getElementById("cspio-headline").innerHTML = result
+		});
+  
+  }, i*3000 )
+
+}
 
 function updateMessage() {
   var message = document.getElementById("cspio-email").value
