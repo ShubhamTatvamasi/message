@@ -13,19 +13,16 @@ web3.eth.getTransactionCount(PublicKey, (error, result) => {
 	Nonce = result
 })
 
-for (let i=0; i<10000; i++) {
-	setTimeout( () => {
-		MessageContract.message((error, result) => {
-      
-      if (result != message) {
-        message = result
-        document.getElementById("cspio-headline").innerHTML = result
-        document.getElementById("cspio-socialprofiles").style.display = "none"
-      }
-
-		});
-  }, i*1000 )
-}
+setInterval( () => {
+  MessageContract.message((error, result) => {
+    
+    if (result != message) {
+      message = result
+      document.getElementById("cspio-headline").innerHTML = result
+      document.getElementById("cspio-socialprofiles").style.display = "none"
+    }
+  });
+}, 1000);
 
 function updateMessage() {
   var newMessage = document.getElementById("cspio-email").value
