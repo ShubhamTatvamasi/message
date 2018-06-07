@@ -9,10 +9,6 @@ const PrivateKey = 'e331b6d69882b4cb4ea581d88e0b604039a3de5967688d3dcffdd2270c0f
 var Nonce = 0
 var message = ""
 
-web3.eth.getTransactionCount(PublicKey, (error, result) => {
-	Nonce = result
-})
-
 setInterval( () => {
   MessageContract.message((error, result) => {
     
@@ -23,6 +19,10 @@ setInterval( () => {
     }
   });
 }, 1000);
+
+web3.eth.getTransactionCount(PublicKey, (error, result) => {
+  Nonce = result
+})
 
 function updateMessage() {
   var newMessage = document.getElementById("cspio-email").value
