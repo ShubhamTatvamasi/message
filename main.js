@@ -34,8 +34,17 @@ function updateBlock() {
   let blockNumberHex = blockNumberInt.toString(16)
   web3.eth.defaultBlock = '0x' + blockNumberHex
 
+  document.getElementById("block-number-button").style.display = "block"
 }
 
+function resetBlock() {
+  
+  document.getElementById("block-number-button").style.display = "none"
+
+  document.getElementById("block-number").placeholder = 'latest'
+  web3.eth.defaultBlock = 'latest'
+
+}
 
 function updateMessage() {
   var newMessage = document.getElementById("cspio-email").value
