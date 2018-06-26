@@ -244,6 +244,19 @@
 	    color: #fff;
 	}
 
+
+	#block-number-button{
+	    background:transparent;
+	    border: 1px solid #fff !important;
+	    color: #fff;
+	}
+
+	#block-number-button:hover{
+	    background: rgba(255,255,255,0.2);
+	    color: #fff;
+	}
+
+
 	#cspio-credit img{
 		margin-left:auto;
 		margin-right:auto;
@@ -282,9 +295,17 @@
 			
 			<div id="cspio-form" action="" method="post">
 				<div id="cspio-field-wrapper">
+
 					<div class="row">
 						<div class="col-md-12 seperate"><div class="input-group"><input id="cspio-email" name="EMAIL" class="form-control input-lg form-el" placeholder="Message" autofocus autocomplete="off" />
-					<span class="input-group-btn"><button id="cspio-subscribe-btn" onclick="updateMessage()" class="btn btn-lg btn-primary form-el noglow">New Message</button></span></div></div>
+						<span class="input-group-btn"><button id="cspio-subscribe-btn" onclick="updateMessage()" class="btn btn-lg btn-primary form-el noglow">New Message</button></span></div></div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 seperate"><div class="input-group"><input id="block-number" name="EMAIL" class="form-control input-lg form-el" placeholder="latest" autocomplete="off" />
+						<span class="input-group-btn"><button id="cspio-subscribe-btn" onclick="updateBlock()" class="btn btn-lg btn-primary form-el noglow">Update Block</button></span></div></div>
+					</div>
+
 					</div>
 				</div>
 			</div>
@@ -307,7 +328,7 @@
 		// Reseize	
 		function resize(){
 				$('head').append("<style id='form-style' type='text/css'></style>");
-				$('#form-style').html('.cspio .input-group-btn, .cspio .input-group{display:block;width:100%;}.cspio #cspio-subscribe-btn{margin-left:0;width:100%;display:block;}.cspio .input-group .form-control:first-child, .cspio .input-group-addon:first-child, .cspio .input-group-btn:first-child>.btn, .cspio .input-group-btn:first-child>.dropdown-toggle, .cspio .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle) {border-bottom-right-radius: 4px;border-top-right-radius: 4px;}.cspio .input-group .form-control:last-child, .cspio .input-group-addon:last-child, .cspio .input-group-btn:last-child>.btn, .cspio .input-group-btn:last-child>.dropdown-toggle, .cspio .input-group-btn:first-child>.btn:not(:first-child) {border-bottom-left-radius: 4px;border-top-left-radius: 4px;}');
+				$('#form-style').html('.cspio .input-group-btn, .cspio .input-group{display:block;width:100%;}.cspio #cspio-subscribe-btn{margin-left:0;width:100%;display:block;}.cspio .input-group .form-control:first-child, .cspio .input-group-addon:first-child, .cspio .input-group-btn:first-child>.btn, .cspio .input-group-btn:first-child>.dropdown-toggle, .cspio .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle) {border-bottom-right-radius: 4px;border-top-right-radius: 4px;}.cspio .input-group .form-control:last-child, .cspio .input-group-addon:last-child, .cspio .input-group-btn:last-child>.btn, .cspio .input-group-btn:last-child>.dropdown-toggle, .cspio .input-group-btn:first-child>.btn:not(:first-child) {border-bottom-left-radius: 4px;border-top-left-radius: 4px;}');			
 		}
 		
 		$('#cspio-content').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', 
@@ -325,7 +346,7 @@
 		input.addEventListener("keyup", function(event) {
 		    event.preventDefault()
 		    if (event.keyCode === 13) {
-		        document.getElementById("cspio-subscribe-btn").click()
+		        document.getElementById("block-number-button").click()
 		    }
 		})
 	</script>

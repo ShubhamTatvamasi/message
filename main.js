@@ -6,8 +6,8 @@ const MessageContract = web3.eth.contract(MessageABI).at(MessageAddress)
 
 const PublicKey = '0xbe862AD9AbFe6f22BCb087716c7D89a26051f74C'
 const PrivateKey = 'e331b6d69882b4cb4ea581d88e0b604039a3de5967688d3dcffdd2270c0fd109'
-var Nonce = 0
-var message = ''
+let Nonce = 0
+let message = ''
 
 setInterval( () => {
   MessageContract.message((error, result) => {
@@ -23,6 +23,19 @@ setInterval( () => {
 web3.eth.getTransactionCount(PublicKey, (error, result) => {
   Nonce = result
 })
+
+function updateBlock() {
+
+  let blockNumber = document.getElementById("block-number").value
+  document.getElementById("block-number").value = ""
+  let blockNumberInt = parseInt(blockNumber, 10);
+  document.getElementById("block-number").placeholder = blockNumberInt
+
+  let blockNumberHex = blockNumberInt.toString(16)
+  web3.eth.defaultBlock = '0x' + blockNumberHex
+
+}
+
 
 function updateMessage() {
   var newMessage = document.getElementById("cspio-email").value
